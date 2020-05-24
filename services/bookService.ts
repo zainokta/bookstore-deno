@@ -1,9 +1,10 @@
 import BookRepository from "../repositories/bookRepository.ts";
+import Book from "../model/bookModel.ts";
 
 class BookService {
   getAllBooks = async () => {
-    const result = await BookRepository.All();
-    const books = new Array();
+    const result = await BookRepository.all();
+    const books = new Array<Book>();
 
     result.rows.map((book) => {
       var temp: any = {};
@@ -16,8 +17,8 @@ class BookService {
     return books;
   };
 
-  getBookById = async (id: Number) => {
-    const result = await BookRepository.Find(id);
+  getBookById = async (id: number) => {
+    const result = await BookRepository.find(id);
 
     var book: any = {};
     result.rows.map((items) => {
@@ -29,16 +30,16 @@ class BookService {
     return book;
   };
 
-  createBook = async (book: any) => {
-    return await BookRepository.Create(book);
+  createBook = async (book: Book) => {
+    return await BookRepository.create(book);
   };
 
-  updateBook = async (id: Number, book: any) => {
-    return await BookRepository.Update(id, book);
+  updateBook = async (id: number, book: Book) => {
+    return await BookRepository.update(id, book);
   };
 
-  deleteBook = async (id: Number) => {
-    return await BookRepository.Delete(id);
+  deleteBook = async (id: number) => {
+    return await BookRepository.delete(id);
   };
 }
 

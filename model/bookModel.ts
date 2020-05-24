@@ -1,8 +1,8 @@
 interface Book {
-  id: Number;
-  title: String;
-  author: String;
-  price: String;
+  id: number;
+  title: string;
+  author: string;
+  price: string;
   createdAt: Date;
   updatedAt: Date;
 }

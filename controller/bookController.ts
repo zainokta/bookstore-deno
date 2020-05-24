@@ -5,14 +5,14 @@ class BookController {
   async index(context: RouterContext) {
     const books = await bookService.getAllBooks();
     context.response.headers.set("Content-Type", "application/json");
-    context.response.body = JSON.stringify({ data: books });
+    context.response.body = { data: books };
   }
 
   async show(context: RouterContext) {
     const { id } = context.params;
     const book = await bookService.getBookById(parseInt(id!));
     context.response.headers.set("Content-Type", "application/json");
-    context.response.body = JSON.stringify({ data: book });
+    context.response.body = { data: book };
   }
 
   async store(context: RouterContext) {
@@ -24,7 +24,7 @@ class BookController {
     await bookService.createBook(book);
 
     context.response.headers.set("Content-Type", "application/json");
-    context.response.body = JSON.stringify({ message: "success" });
+    context.response.body = { message: "success" };
   }
 
   async update(context: RouterContext) {
@@ -36,7 +36,7 @@ class BookController {
     await bookService.updateBook(parseInt(id!), book);
 
     context.response.headers.set("Content-Type", "application/json");
-    context.response.body = JSON.stringify({ message: "success" });
+    context.response.body = { message: "success" };
   }
 
   async delete(context: RouterContext) {
@@ -44,7 +44,7 @@ class BookController {
     await bookService.deleteBook(parseInt(id!));
 
     context.response.headers.set("Content-Type", "application/json");
-    context.response.body = JSON.stringify({ message: "success" });
+    context.response.body = { message: "success" };
   }
 }
 export default new BookController();
